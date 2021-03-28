@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+    Exercici nivell 2
+        Aprofita la funció "calculadora" de l'exercici anterior per crear una calculadora completa amb opcions per sumar, restar, multiplicar i dividir. Hauràs de controlar el Zero com a denominador d'una divisió, ja que si l'usuari divideix qualsevol número entre 0 donarà error (p.e. 3/0), has de garantir que no falli!
+    -->
+
+    <h2>Calculadora</h2>
+
+    <p>Introdueix un operador: "suma" o "resta" o "multiplicacio" o "divisio" </p> 
+    <input type="string" id="operacio">
+
+    <p>Introdueix un nombre</p>
+    <input type="number" id="nombre1">
+
+    <p>Introdueix un altre nombre. El nombre introduit ha de ser diferent de 0 si l'operador escollit es la divisio</p>
+    <input type="number" id="nombre2"><br><br>
+
+    <input type="button" onclick="calculadora()" value="CALCULAR">
+
+    <p id="resultatOperacio"></p>
+
+
+    <script>
+        
+        function calculadora(){
+        
+            let operador = document.getElementById('operacio').value;
+            let valor1 = parseInt(document.getElementById('nombre1').value);
+            let valor2 = parseInt(document.getElementById('nombre2').value);
+
+
+            let resultat;
+            let missatge;
+
+            switch(operador){
+
+                case "suma":
+                    resultat = valor1 + valor2;
+                    missatge = "el resultat de sumar " + valor1 + " mes " + valor2 + " es: " + resultat;
+                    break;
+
+                case "resta":
+                    resultat = valor1 - valor2;
+                    missatge = "el resultat de restar " + valor1 + " menys " + valor2 + " es: " + resultat;
+
+                    break;
+
+                case "multiplicacio":
+                    resultat = valor1 * valor2;
+                    missatge = "el resultat de multiplicar " + valor1 + " per " + valor2 + " es: " + resultat;
+                    break;
+
+                case "divisio":
+                    resultat = valor1 / valor2;
+
+                    if(valor2 === 0){
+                        alert("ERROR! El segon nombre introduit ha de ser diferent de 0");
+
+                    }else{
+                        missatge = "el resultat de dividir " + valor1 + " entre " + valor2 + " es: " + resultat;
+                        break;
+                    }
+     
+            }
+
+            document.getElementById("resultatOperacio").innerHTML = missatge;
+
+        }
+
+    </script>
+
+</body>
+</html>
